@@ -3,6 +3,7 @@
  */
 
 import Koa from 'koa';
+import bodyParser from 'koa-bodyparser';
 import { ApolloServer, gql } from 'apollo-server-koa';
 
 // Construct a schema, using GraphQL schema language
@@ -22,6 +23,16 @@ const resolvers = {
 const server = new ApolloServer({ typeDefs, resolvers });
 
 const app = new Koa();
+
+// add body parser
+app.use(
+    bodyParser({
+        enableTypes: ['json', 'form'],
+        formLimit: '1mb',
+        jsonLimit: '1mb',
+        textLimit: '1mb',
+    }),
+);
 server.applyMiddleware({ app });
 // alternatively you can get a composed middleware from the apollo server
 // app.use(server.getMiddleware());
