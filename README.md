@@ -10,6 +10,7 @@ We're using the official [apollo-server-koa](https://github.com/apollographql/ap
 
 * Git commit message validation with [commitlint](https://github.com/conventional-changelog/commitlint) and [husky](https://github.com/typicode/husky)
 
+* Support Modularizing Schema and Resolver by [merge-graphql-schemas](https://github.com/Urigo/merge-graphql-schemas)
 
 ## Demo App
 

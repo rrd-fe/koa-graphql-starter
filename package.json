@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node -r tsconfig-paths/register ./src/index.ts"
+    "start": "ts-node -r tsconfig-paths/register ./src/index.ts",
+    "generate": "graphql-codegen --config codegen.yml"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,9 @@
   "devDependencies": {
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
+    "@graphql-codegen/cli": "^1.7.0",
+    "@graphql-codegen/typescript": "^1.7.0",
+    "@graphql-codegen/typescript-resolvers": "1.7.0",
     "@types/koa": "^2.0.49",
     "@typescript-eslint/eslint-plugin": "^2.1.0",
     "@typescript-eslint/parser": "^2.1.0",
