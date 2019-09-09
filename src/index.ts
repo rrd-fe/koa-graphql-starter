@@ -8,8 +8,13 @@ import { ApolloServer, gql } from 'apollo-server-koa';
 
 import typeDefs from './module/typeDefs';
 import resolvers from './module/resolver';
+import getDataSource from './common/data_source/index';
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    dataSources: getDataSource,
+});
 
 const app = new Koa();
 
