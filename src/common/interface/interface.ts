@@ -1,7 +1,7 @@
 import { Context } from 'koa';
-
+import { IncomingMessage, ServerResponse } from 'http';
 import ProductDataSource from '../data_source/product';
-import UserDataSource from '../data_source/user';
+import UserDataSource, { User } from '../data_source/user';
 import TradeDataSource from '../data_source/trade';
 
 /**
@@ -15,8 +15,14 @@ export interface CustomDataSource {
     trade: TradeDataSource;
 }
 
+export interface DemoKoaContext extends Context {
+    sessionUser?: User;
+}
+
 export interface CustomContext {
-    koaCtx: Context;
+    koaCtx: DemoKoaContext;
+    req: IncomingMessage;
+    res: ServerResponse;
 }
 
 export interface CustomResolversContext extends CustomContext {
