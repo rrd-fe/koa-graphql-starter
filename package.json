@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node -r tsconfig-paths/register ./src/index.ts",
-    "generate": "graphql-codegen --config codegen.yml"
+    "generate": "graphql-codegen --watch --config codegen.yml"
   },
   "repository": {
     "type": "git",
