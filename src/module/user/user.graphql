@@ -1,10 +1,14 @@
-type Query {
-    user(userId: Int!): User
-    users: [User]
+type User {
+    userId: ID!
+    name: String!
+    age: Int!
+    orders: [Order]
 }
 
-type User {
-    id: ID!
-    name: String
-    age: Int
+type Query {
+    me: User
+}
+
+type Mutation {
+    login(name: String!, password: String!): User
 }

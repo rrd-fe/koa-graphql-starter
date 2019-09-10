@@ -25,9 +25,9 @@ type Product {
 }
 type User {
     userId: ID!
-    name: String
+    name: String!
     age: Int!
-    orders: [Order]!
+    orders: [Order]
 }
 type Order {
     orderId: ID!

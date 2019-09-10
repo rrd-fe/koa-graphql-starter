@@ -1,0 +1,15 @@
+type Product {
+    productId: ID!
+    name: String!
+    img: String!
+    price: Int!
+}
+
+type Query {
+    productDetail(productId: ID!): Product
+    productList: [Product]
+}
+
+type Mutation {
+    buy(productId: ID!, num: Int!): Order
+}

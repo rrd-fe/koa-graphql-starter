@@ -1,23 +1,17 @@
-const userData = [
-    {
-        userId: 0,
-        name: 'hanmeimei',
-        age: 21,
-    },
-    {
-        userId: 1,
-        name: 'lilei',
-        age: 22,
-    },
-];
+import getDataSources from 'common/data_source/index';
+import { MutationLoginArgs } from '../interface';
+
+const userDataSource = getDataSources().user;
 
 export default {
     Query: {
-        user: (parent: any, args: any) => {
-            return userData.find(user => user.userId === args.userId);
+        me: async (parent: any, args: any, context: any) => {
+            context.userId = '8';
+            const user = await userDataSource.getUserById(context.userId);
+            return user;
         },
-        users: () => {
-            return userData;
-        },
+    },
+    Mutation: {
+        login: (parent: any, args: MutationLoginArgs) => {},
     },
 };

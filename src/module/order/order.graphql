@@ -1,0 +1,9 @@
+type Order {
+    orderId: ID!
+    product: Product!
+    user: User!
+    # The number of product
+    num: Int!
+    # Timestamp then order created
+    createAt: Int
+}
