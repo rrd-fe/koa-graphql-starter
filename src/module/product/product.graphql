@@ -11,5 +11,5 @@ type Query {
 }
 
 type Mutation {
-    buy(productId: ID!, num: Int!): Order
+    buy(productId: ID!, num: Int!): Order @loginFilter
 }

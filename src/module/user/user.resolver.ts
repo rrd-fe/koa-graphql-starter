@@ -3,13 +3,8 @@ import { MutationLoginArgs } from '../module.interface';
 
 export default {
     Query: {
-        me: async (
-            parent: any,
-            args: any,
-            { dataSources }: CustomResolversContext,
-        ) => {
-            const userId = '8'; // 从 koaCtx上获取
-            return dataSources.user.getUserById(userId);
+        me: (parent: any, args: any, { koaCtx }: CustomResolversContext) => {
+            return koaCtx.sessionUser;
         },
     },
     Mutation: {

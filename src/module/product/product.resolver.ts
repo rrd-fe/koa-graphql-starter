@@ -1,5 +1,5 @@
 import { CustomResolversContext } from 'common/interface/interface';
-import { QueryProductDetailArgs } from '../module.interface';
+import { QueryProductDetailArgs, MutationBuyArgs } from '../module.interface';
 
 export default {
     Query: {
@@ -23,6 +23,19 @@ export default {
         },
     },
     Mutation: {
-        buy: () => {},
+        buy: async (
+            root: any,
+            args: MutationBuyArgs,
+            { dataSources, koaCtx }: CustomResolversContext,
+        ) => {
+            let order = null;
+            if (koaCtx.sessionUser && koaCtx.sessionUser.userId) {
+                order = await dataSources.trade.buy({
+                    userId: koaCtx.sessionUser.userId,
+                    ...args,
+                });
+            }
+            return order;
+        },
     },
 };
