@@ -1,4 +1,4 @@
-import { Context } from 'koa';
+import { Context, Request, Response } from 'koa';
 import { IncomingMessage, ServerResponse } from 'http';
 import ProductDataSource from '../data_source/product';
 import UserDataSource, { User } from '../data_source/user';
@@ -23,6 +23,8 @@ export interface CustomContext {
     koaCtx: DemoKoaContext;
     req: IncomingMessage;
     res: ServerResponse;
+    request: Request;
+    response: Response;
 }
 
 export interface CustomResolversContext extends CustomContext {

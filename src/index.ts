@@ -2,7 +2,7 @@
  * server entry
  */
 
-import Koa from 'koa';
+import Koa, { Context } from 'koa';
 import bodyParser from 'koa-bodyparser';
 import { ApolloServer, gql } from 'apollo-server-koa';
 
@@ -17,11 +17,13 @@ const server = new ApolloServer({
     resolvers,
     schemaDirectives: customDirectives.schemaDirectives,
     dataSources: getDataSource,
-    context: ({ ctx }) => {
+    context: ({ ctx }: { ctx: Context }) => {
         return {
             koaCtx: ctx,
             req: ctx.req,
             res: ctx.res,
+            request: ctx.request,
+            response: ctx.response,
         };
     },
 });
