@@ -10,11 +10,20 @@ import typeDefs from './module/typeDefs';
 import resolvers from './module/resolver';
 import getDataSource from './common/data_source/index';
 import auth from './common/middleware/auth';
+import customDirectives from './common/directive/index';
 
 const server = new ApolloServer({
-    typeDefs,
+    typeDefs: customDirectives.typeDefs.concat(typeDefs),
     resolvers,
+    schemaDirectives: customDirectives.schemaDirectives,
     dataSources: getDataSource,
+    context: ({ ctx }) => {
+        return {
+            koaCtx: ctx,
+            req: ctx.req,
+            res: ctx.res,
+        };
+    },
 });
 
 const app = new Koa();
