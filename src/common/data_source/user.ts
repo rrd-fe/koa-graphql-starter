@@ -10,7 +10,7 @@ export interface User {
 }
 
 export default class UserDataSource extends DataSource {
-    async getUserById(userId: number): Promise<User> {
+    async getUserById(userId: string): Promise<User> {
         return new Promise(function(resolve) {
             resolve({
                 userId: `user-id-${userId}`,

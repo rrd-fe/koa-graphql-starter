@@ -1,17 +1,28 @@
-import getDataSources from 'common/data_source/index';
-import { MutationLoginArgs } from '../interface';
-
-const userDataSource = getDataSources().user;
+import { CustomResolversContext } from 'common/interface/interface';
+import { MutationLoginArgs } from '../module.interface';
 
 export default {
     Query: {
-        me: async (parent: any, args: any, context: any) => {
-            context.userId = '8';
-            const user = await userDataSource.getUserById(context.userId);
-            return user;
+        me: async (
+            parent: any,
+            args: any,
+            { dataSources }: CustomResolversContext,
+        ) => {
+            const userId = '8'; // 从 koaCtx上获取
+            return dataSources.user.getUserById(userId);
         },
     },
     Mutation: {
         login: (parent: any, args: MutationLoginArgs) => {},
+    },
+    User: {
+        orders: async (
+            { userId }: any,
+            args: any,
+            { dataSources }: CustomResolversContext,
+        ) => {
+            const orders = dataSources.trade.getOrderByUser(userId);
+            return orders;
+        },
     },
 };

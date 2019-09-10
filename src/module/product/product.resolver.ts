@@ -1,18 +1,24 @@
-import getDataSources from 'common/data_source/index';
-import { QueryProductDetailArgs } from '../interface';
-
-const productDataSource = getDataSources().product;
+import { CustomResolversContext } from 'common/interface/interface';
+import { QueryProductDetailArgs } from '../module.interface';
 
 export default {
     Query: {
-        productDetail: async (root: any, args: QueryProductDetailArgs) => {
-            const product = await productDataSource.getProductDetail(
+        productDetail: async (
+            root: any,
+            args: QueryProductDetailArgs,
+            { dataSources }: CustomResolversContext,
+        ) => {
+            const product = await dataSources.product.getProductDetail(
                 args.productId,
             );
             return product;
         },
-        productList: async (root: any, args: {}) => {
-            const productList = await productDataSource.getProductList();
+        productList: async (
+            root: any,
+            args: {},
+            { dataSources }: CustomResolversContext,
+        ) => {
+            const productList = await dataSources.product.getProductList();
             return productList;
         },
     },
