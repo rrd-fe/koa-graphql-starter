@@ -35,6 +35,7 @@ type Order {
     user: User!
     # the number of the product
     num: Int!
+    # timestamp when order created
     createAt: Int
 }
 ```
