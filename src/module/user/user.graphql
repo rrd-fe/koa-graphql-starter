@@ -6,7 +6,7 @@ type User {
 }
 
 type Query {
-    me: User
+    me: User @loginFilter
 }
 
 type Mutation {
