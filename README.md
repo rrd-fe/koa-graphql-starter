@@ -12,6 +12,10 @@ We're using the official [apollo-server-koa](https://github.com/apollographql/ap
 
 * Support Modularizing Schema and Resolver by [merge-graphql-schemas](https://github.com/Urigo/merge-graphql-schemas)
 
+* Auto generates code out of your GraphQL schema by [graphql-code-generator](https://github.com/dotansimha/graphql-code-generator)
+
+* Support automatically restarting the node application then code changes by [nodemon](https://github.com/remy/nodemon/)
+
 ## Demo App
 
 To illustrate the result of this boilerplate, we are creating an online E-commerce App, which has the following entities: `Product`, `User`, `Order`. The schema definitions are like this:
