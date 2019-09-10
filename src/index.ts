@@ -9,6 +9,7 @@ import { ApolloServer, gql } from 'apollo-server-koa';
 import typeDefs from './module/typeDefs';
 import resolvers from './module/resolver';
 import getDataSource from './common/data_source/index';
+import auth from './common/middleware/auth';
 
 const server = new ApolloServer({
     typeDefs,
@@ -27,6 +28,7 @@ app.use(
         textLimit: '1mb',
     }),
 );
+app.use(auth());
 server.applyMiddleware({ app });
 // alternatively you can get a composed middleware from the apollo server
 // app.use(server.getMiddleware());
