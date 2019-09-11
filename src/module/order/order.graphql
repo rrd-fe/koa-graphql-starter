@@ -5,5 +5,5 @@ type Order {
     # The number of product
     num: Int!
     # Timestamp then order created
-    createAt: Int
+    createAt: Float
 }
